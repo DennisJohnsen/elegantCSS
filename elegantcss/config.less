@@ -1,0 +1,151 @@
+/*  -------------------------------------
+    CONFIG
+-------------------------------------- */
+/*  This is the config of the framework.
+*
+*   The values are measured in pixels, but you should not include 'px'.
+*   Just type the unitless value.
+*/
+
+
+
+/*  -------------------------------------
+    BASE STYLING
+-------------------------------------- */
+/*  Decide which base and generic stuff to use ('true' or 'false')
+*/
+@global-border-box: true;
+
+
+
+/*  -------------------------------------
+    OBJECTS
+-------------------------------------- */
+/*  Decide which objects and abstractions to use ('true' or 'false')
+*/
+@include-grid:          true;
+@include-grid-offset:   true;
+@include-grid-pushpull: true; /* Produces alot of code */
+@include-box:           true;
+@include-nav:           true;
+@include-breadcrumb:    true;
+@include-pagination:    true;
+@include-buttons:       true;
+@include-mediaobject:   true;
+
+
+
+/*  -------------------------------------
+    BASE STUFF
+-------------------------------------- */
+@font-size:     17;
+@line-height:   24;
+@font-color:    #444;
+@font-family:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-headers:  'Helvetica Black', 'Arial Black', Helvetica, Arial, sans-serif;
+@font-code:     Monaco, Menlo, Consolas, 'Courier New', monospace;
+
+
+
+/*  -------------------------------------
+    COLORS
+-------------------------------------- */
+@color-white:           #fff;
+@color-grey:            #bdc3c7;
+@color-black:           #000;
+
+@color-primary:         #3498db;
+@color-success:         #2ecc71;
+@color-warning:         #f39c12;
+@color-error:           #e74c3c;
+
+
+/*  Default UI color which will color most UI stuff in the
+*   framework. (Tables, button etc.)
+*/
+@color-ui:              #e6e6e6;
+
+
+
+/*  -------------------------------------
+    GRID SYSTEM
+-------------------------------------- */
+/* How many columns do you want in the grid?
+*/
+@grid-columns:  12;
+
+/*  Change the gutter size between the grid columns (in pixels)
+*/
+@grid-gutter:           48;
+@grid-gutter--custom:   96; /* Alternative gutter */
+
+
+
+/*  -------------------------------------
+    RESPONSIVE
+-------------------------------------- */
+/*  Want the framework to be responsive? ('true' or 'false')
+*   This adds 1 breakpoint by default.
+*/
+@responsive:        true;
+
+/*  Want more breakpoints? ('true' or 'false');
+*   "I don't see bp1!" - Dont panic, it was automaticly added through @responsive: true;
+*/
+@responsive-bp2:    true;
+@responsive-bp3:    true;
+@responsive-bp4:    true;
+@responsive-bp5:    false;
+
+/*  Change at which widths the breakpoints kick in (in pixels)
+*   This is beeing calculated into EM's
+*/
+@bp1:               480;
+@bp2:               768;
+@bp3:               1024;
+@bp4:               1280;
+@bp5:               1600;
+
+
+
+/*  -------------------------------------
+    BUTTON
+-------------------------------------- */
+/*  Change the font-size of buttons (in pixels)
+*/
+@btn:           14;
+@btn--huge:     72;
+@btn--big:      36;
+@btn--small:    12;
+
+
+
+/*  -------------------------------------
+    FONT SIZES
+-------------------------------------- */
+/*  Change the font-sizes (in pixels)
+*/
+@txt--biggest:  96;
+@txt--bigger:   72;
+@txt--big:      52;
+
+@h1:            42;
+@h2:            36;
+@h3:            30;
+@h4:            24;
+@h5:            20;
+@h6:            16;
+
+@txt--small:    14;
+@txt--smallest: 12;
+
+
+
+/*  -------------------------------------
+    BRAND STUFF
+-------------------------------------- */
+/*  Change the font-size of buttons (in pixels)
+*/
+@brand-color:   #2ecc71;
+@brand-face:    Futura, "Trebuchet MS", Arial, sans-serif;
+@brand-rounded: 4px;

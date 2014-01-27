@@ -1,0 +1,42 @@
+/*  -------------------------------------
+    BOXED
+-------------------------------------- */
+
+/*  Adds padding to element, to box off content.
+*   Tip: Use to place a background color to your column.
+*
+*   <div class="box"><div>
+*/
+.include-box() when (@include-box = false) {
+}
+
+.include-box() when (@include-box = true) {
+    .box, .box--small, .box--large {
+        &:extend(.cf all);
+        display: block;
+
+        /*  Removes the margin from last item.
+        */
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .box {
+        padding: @base-spacing;
+    }
+
+    /*  Just like boxed, but 50% larger.
+    */
+    .box--large {
+        padding: @large-spacing;
+    }
+
+    /*  Just like boxed, but 50% smaller.
+    */
+    .box--small {
+        padding: @small-spacing;
+    }
+}
+
+.include-box;

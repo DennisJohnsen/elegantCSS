@@ -1,0 +1,193 @@
+/*  -------------------------------------
+    MIXINS
+-------------------------------------- */
+/*  .class {
+*       .font-size(20);
+*       .font-size--no-baseline(12);
+*   }
+*/
+.font-size(@value: @font-size) {
+    font-size: (@value * 1px);
+    font-size: ((@value / @font-size) * 1rem);
+    line-height: (ceil(@value / @line-height)*(@line-height / @value));
+}
+
+.font-size--no-baseline(@value: @font-size) {
+    font-size: (@value * 1px);
+    font-size: ((@value / @font-size) * 1rem);
+}
+
+
+/*  .class {
+*       .responsive-font(0em, 80em, 16, 200);
+*       .responsive-font--no-baseline(0em, 80em, 16, 200);
+*   }
+*/
+.responsive-font(@min: @bp0--max-em, @max: @bp4--min-em, @start: @font-size, @end: @h1, @inc: 2, @offset: 0) when ((@min + @offset) =< @max) {
+    .font-size(@start);
+    @media only screen and(min-width: (@min + @offset)) {
+        .font-size((@start + ((@offset / (@max - @min)) * (@end - @start))));
+    }
+    .responsive-font(@min, @max, @start, @end, @inc, (@offset + @inc));
+}
+
+.responsive-font--no-baseline(@min, @max, @start, @end, @inc: 2, @offset: 0) when ((@min + @offset) =< @max) {
+    .font-size--no-baseline(@start);
+    @media only screen and(min-width: (@min + @offset)) {
+        .font-size--no-baseline((@start + ((@offset / (@max - @min)) * (@end - @start))));
+    }
+    .responsive-font--no-baseline(@min, @max, @start, @end, @inc, (@offset + @inc));
+}
+
+
+.text-size-adjust(@value: none) {
+    -webkit-text-size-adjust: @value;
+    -moz-text-size-adjust: @value;
+    -ms-text-size-adjust: @value;
+    -o-text-size-adjust: @value;
+    text-size-adjust: @value;
+}
+
+.box-sizing(@value: border-box) {
+    -webkit-box-sizing: @value;
+    -moz-box-sizing: @value;
+    box-sizing: @value;
+}
+
+
+/*  Grid
+*/
+.rows(@prefix: ~"row") {
+    .@{prefix} {
+        margin-left: (@grid-gutter--value * -1);
+
+        > .col {
+            padding-left: @grid-gutter--value ;
+        }
+
+
+        &--narrow {
+            margin-left: (@grid-gutter--half * -1);
+
+            > .col {
+                padding-left: @grid-gutter--half;
+            }
+        }
+
+        &--sticky {
+            margin-left: 0;
+
+            > .col {
+                padding-left: 0;
+            }
+        }
+
+        &--custom {
+            margin-left: (@grid-gutter--custom-value * -1);
+
+            > .col {
+                padding-left: @grid-gutter--custom-value;
+            }
+        }
+    }
+}
+
+.cols(@prefix: ~"col--") {
+    .col-loop(@cols: @grid-columns, @index: 1) when (@index =< @cols) {
+        .@{prefix}@{index} {
+            width: round(percentage(@index / @cols), 4);
+        }
+        .col-loop(@cols, (@index + 1));
+    }
+    .col-loop;
+}
+
+.pushs(@prefix: ~"push--") {
+    .push-loop(@cols: @grid-columns, @index: 0) when (@index =< @cols) {
+        .@{prefix}@{index} {
+            left: round(percentage(@index / @cols), 4);
+        }
+        .push-loop(@cols, (@index + 1));
+    }
+    .push-loop;
+}
+
+.offsets(@prefix: ~"offset--") {
+    .offset-loop(@cols: @grid-columns, @index: 0) when (@index < @cols) {
+        .@{prefix}@{index} {
+            margin-left: round(percentage(@index / @cols), 4);
+        }
+        .offset-loop(@cols, (@index + 1));
+    }
+    .offset-loop;
+}
+
+.pulls(@prefix: ~"pull--") {
+    .pull-loop(@cols: @grid-columns, @index: 0) when (@index =< @cols) {
+        .@{prefix}@{index} {
+            right: round(percentage(@index / @cols), 4);
+        }
+        .pull-loop(@cols, (@index + 1));
+    }
+    .pull-loop;
+}
+
+
+
+/*  Powerfull mixin system for adding the grid system to
+*   any class or element, for creating a more semantic markup
+
+*   Simply add the mixin .grid-row(); for a grid row with normal sized
+*   gutter, or add a parameter of the following: [sticky|narrow|custom]
+
+*   .page {
+*       .grid-row(sticky);
+*   }
+*/
+.grid-row(@gutter: normal) {
+    &:extend(.row all);
+    
+    .grid-gutter-width() when (@gutter = normal) {
+        margin-left: (@grid-gutter--value * -1);
+
+        > * {
+            padding-left: @grid-gutter--value;
+        }
+    }
+
+    .grid-gutter-width() when (@gutter = narrow) {
+        margin-left: (@grid-gutter--half * -1);
+
+        > * {
+            padding-left: @grid-gutter--half;
+        }
+    }
+
+    .grid-gutter-width() when (@gutter = sticky) {
+        margin-left: 0;
+
+        > * {
+            padding-left: 0;
+        }
+    }
+
+    .grid-gutter-width() when (@gutter = custom) {
+        margin-left: (@grid-gutter--custom-value * -1);
+
+        > * {
+            padding-left: @grid-gutter--custom-value;
+        }
+    }
+
+    .grid-gutter-width;
+}
+
+.grid-col(@col: @grid-columns) {
+    &:extend(.col);
+
+    .grid-col-width() when (isnumber(@col)) and (@col =< @grid-columns) {
+        width: round(percentage(((1 / @grid-columns) * @col)), 4);
+    }
+
+    .grid-col-width;
+}

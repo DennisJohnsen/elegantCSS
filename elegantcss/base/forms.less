@@ -1,0 +1,30 @@
+/*  -------------------------------------
+    FORMS
+-------------------------------------- */
+/*  #TODO
+*/
+label, input, textarea, button, select, option {
+    cursor: pointer;
+}
+
+.txt-input,
+textarea {
+    &:active,
+    &:focus {
+        cursor: text;
+        outline: none;
+    }
+}
+
+fieldset {
+    padding: @base-spacing;
+}
+
+button, input {
+    line-height: normal;
+}
+
+label,
+.label {
+    display: block;
+}

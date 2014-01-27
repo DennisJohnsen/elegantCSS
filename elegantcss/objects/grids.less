@@ -1,0 +1,96 @@
+/*  -------------------------------------
+    GRIDS
+-------------------------------------- */
+.include-grid() when (@include-grid = false) {}
+
+.include-grid() when (@include-grid = true) {
+
+    /*  Fluid & nestable grid system
+
+    *   Mobile first approach. Keep in mind that col--1, col--2
+    *   and col--3 might be too small for mobile portrait.
+
+    *   <div class="row  row--narrow">
+    *       <div class="col  col--2"></div>
+    *       <div class="col  col--6"></div>
+    *       <div class="col  col--4"></div>
+    *   </div>
+    */
+    .row {
+        .cf;
+        list-style: none;
+    }
+    
+    .col {
+        .border-box;
+        .float--left;
+        position: relative;
+        width: 100%;
+    }
+
+    .rows;
+    .cols;
+
+
+    /*  Responsive grid
+
+    *   <div class="row  row--sticky  bp2-row--narrow">
+    *       <div class="col  col--6  bp2-col--4 "></div>
+    *       <div class="col  col--6  bp2-col--4  bp3-col--3"></div>
+    *       <div class="col  col--6  bp3-col--4  bp3-col--3  bp4-col--2"></div>
+    *   </div>
+    */
+    .responsive-grids() when (@responsive = false) {}
+
+    .responsive-grids() when (@responsive = true) {
+        @media @bp1--min {
+            .rows(~"bp1-row");
+            .cols(~"bp1-col--");
+        }
+
+        .bp2() when (@responsive-bp2 = false) {}
+
+        .bp2() when (@responsive-bp2 = true) {
+            @media @bp2--min {
+                .rows(~"bp2-row");
+                .cols(~"bp2-col--");
+            }
+        }
+
+        .bp3() when (@responsive-bp3 = false) {}
+
+        .bp3() when (@responsive-bp3 = true) {
+            @media @bp3--min {
+                .rows(~"bp3-row");
+                .cols(~"bp3-col--");
+            }
+        }
+
+        .bp4() when (@responsive-bp4 = false) {}
+
+        .bp4() when (@responsive-bp4 = true) {
+            @media @bp4--min {
+                .rows(~"bp4-row");
+                .cols(~"bp4-col--");
+            }
+        }
+
+        .bp5() when (@responsive-bp5 = false) {}
+
+        .bp5() when (@responsive-bp5 = true) {
+            @media @bp5--min {
+                .rows(~"bp5-row");
+                .cols(~"bp5-col--");
+            }
+        }
+
+        .bp2;
+        .bp3;
+        .bp4;
+        .bp5;
+    }
+
+    .responsive-grids;
+}
+
+.include-grid;

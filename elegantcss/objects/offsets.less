@@ -1,0 +1,82 @@
+/*  -------------------------------------
+    GRID OFFSETS
+-------------------------------------- */
+
+/*  Offset grid columns 
+*
+*   <div class="row">
+*       <div class="col--3  offset--2"></div>
+*       <div class="col--6  offset--1"></div>
+*   </div>
+*/
+.include-grid-offset() when (@include-grid-offset = false) {
+}
+
+.include-grid-offset() when (@include-grid-offset = true) {
+
+    .offsets;
+
+
+    /*  Responsive offset grid columns
+
+    *   <div class="row">
+    *       <div class="col--3  offset--2  bp2-offset--1"></div>
+    *       <div class="col--6  offset--1  bp2-offset--2"></div>
+    *   </div>
+    */
+
+    .responsive-offsets() when (@responsive = false) {
+    }
+
+    .responsive-offsets() when (@responsive = true) {
+        @media @bp1--min {
+            .offsets(~"bp1-offset--");
+        }
+
+        .bp2() when (@responsive-bp2 = false) {
+        }
+
+        .bp2() when (@responsive-bp2 = true) {
+            @media @bp2--min {
+                .offsets(~"bp2-offset--");
+            }
+        }
+
+        .bp3() when (@responsive-bp3 = false) {
+        }
+
+        .bp3() when (@responsive-bp3 = true) {
+            @media @bp3--min {
+                .offsets(~"bp3-offset--");
+            }
+        }
+
+        .bp4() when (@responsive-bp4 = false) {
+        }
+
+        .bp4() when (@responsive-bp4 = true) {
+            @media @bp4--min {
+                .offsets(~"bp4-offset--");
+            }
+        }
+
+        .bp5() when (@responsive-bp5 = false) {
+        }
+
+        .bp5() when (@responsive-bp5 = true) {
+
+            @media @bp5--min {
+                .offsets(~"bp5-offset--");
+            }
+        }
+
+        .bp2;
+        .bp3;
+        .bp4;
+        .bp5;
+    }
+
+    .responsive-offsets;
+}
+
+.include-grid-offset;

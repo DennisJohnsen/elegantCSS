@@ -1,0 +1,32 @@
+/*  -------------------------------------
+    TABLES
+-------------------------------------- */
+
+table {
+    max-width: 100%;
+
+    th, td {
+        &:extend(.txt--left);
+        padding: (@small-spacing / 2);
+
+        @media @bp2--min {
+            padding: @small-spacing;
+        }
+    }
+}
+
+[colspan] {
+    &:extend(.txt--center);
+}
+
+[colspan="1"] {
+    &:extend(.txt--left);
+}
+
+[rowspan] {
+    &:extend(.align--middle);
+}
+
+[rowspan="1"] {
+    &:extend(.align--top);
+}

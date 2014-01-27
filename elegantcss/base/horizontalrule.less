@@ -1,0 +1,41 @@
+/*  -------------------------------------
+    HORISONTAL RULE
+-------------------------------------- */
+
+hr {
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: @color-ui;
+    margin-bottom: (@base-spacing - 1);
+    margin-bottom: (((@line-height - 1) / @font-size) * 1rem);
+}
+
+/*  Dotted horizontal rule style
+*/
+.hr--dotted {
+    border-bottom-style: dotted;
+}
+
+/*  Dashed horizontal rule style
+*/
+.hr--dashed {
+    border-bottom-style: dashed;
+}
+
+/*  Even more whitespace
+*/
+.hr--more {
+    margin-top: (@large-line-height * 1px);
+    margin-top: ((@large-line-height / @font-size) * 1rem);
+    margin-bottom: ((@large-line-height - 1) * 1px);
+    margin-bottom: (((@large-line-height - 1) / @font-size) * 1rem);
+}
+
+/*  Not as wide horizontal rule
+*/
+.hr--narrow {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}

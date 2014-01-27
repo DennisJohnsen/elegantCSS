@@ -1,0 +1,31 @@
+/*  -------------------------------------
+    CODE
+-------------------------------------- */
+
+code, pre {
+    border-radius: @brand-rounded;
+    font-family: @font-code;
+    background: @color-ui;
+}
+
+code {
+    line-height: 1; /* Fix for monospace fonts breaking baseline */
+    padding: 3px (@small-spacing / 2) 2px;
+}
+
+pre {
+    &:extend(.border-box);
+    max-width: 100%;
+    padding: @small-spacing;
+    display: block;
+    overflow-x: auto;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre;
+    white-space: pre-wrap;
+
+    code {
+        &:extend(.no--padding);
+        line-height: (ceil(@font-size / @line-height) * (@line-height / @font-size));
+    }
+}

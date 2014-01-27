@@ -1,0 +1,60 @@
+/*  -------------------------------------
+    THE NAV OBJECT
+-------------------------------------- */
+
+/*  <ul class="nav">
+*      <li><a href=""></a></li>
+*  </ul>
+*/
+.include-nav() when (@include-nav = false) {
+}
+
+.include-nav() when (@include-nav = true) {
+    .nav {
+        list-style: none;
+        margin-left: 0;
+
+        li, a {
+            display: inline-block;
+        }
+    }
+
+    /*  Stacks the lists in a vetical navigation
+    *
+    *   <ul class="nav nav--vertical"></ul>
+    */
+    .nav--vertical {
+        li {
+            display: list-item;
+        }
+
+        a {
+            display: block;
+        }
+    }
+
+    /*  Centers the lists 
+    */
+    .nav--banner {
+        text-align: center;
+    }
+
+    /*  Adds a seperator 
+    *
+    *   <ul class="nav nav--breadcrumb"></ul>
+    */
+    .nav--breadcrumb {
+        li {
+            &:before {
+                content: "» ";
+            }
+
+            &:first-child:before {
+                content: "";
+                content: none;
+            }
+        }
+    }
+}
+
+.include-nav;

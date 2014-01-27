@@ -1,0 +1,60 @@
+/*  -------------------------------------
+    MEDIA OBJECT
+-------------------------------------- */
+
+/*  #TODO
+*
+*   <div class="media">
+*       <img class="media_img" src="" alt="">
+*       <div class="media_body"></div>
+*   </div>
+*/
+
+.include-mediaobject() when (@include-mediaobject = false) {
+}
+
+.include-mediaobject() when (@include-mediaobject = true) {
+    .media {
+        .cf;
+        display: block;
+
+        &__img {
+            &:extend(.float--left);
+            margin-right: @base-spacing;
+        }
+
+        &__body {
+            overflow: hidden;
+            display: block;
+        }
+    }
+
+    /*  Move the image to the right instead.
+    */
+    .media__img--rev {
+        &:extend(.float--right);
+        margin-left: @base-spacing;
+    }
+
+    /*  Less margin when in a small box
+    */
+    .box--small .media__img {
+        margin-right: @small-spacing;
+
+        &--rev {
+            margin-left: @small-spacing;
+        }
+    }
+
+    /*  More margin when in a large box
+    */
+    .box--large .media__img {
+        margin-right: @large-spacing;
+    }
+
+    .box--large .media__img--rev {
+        margin-left: @large-spacing;
+    }
+}
+
+.include-mediaobject;

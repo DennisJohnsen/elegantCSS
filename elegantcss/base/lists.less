@@ -1,0 +1,33 @@
+/*  -------------------------------------
+    LISTS
+-------------------------------------- */
+
+ul, ol, dd {
+    &:extend(.margin--bottom);
+    margin-left: @large-spacing;
+    margin-left: ((@large-line-height / @font-size) * 1rem);
+}
+
+/*  To remove the vertical spacing from nested lists.
+*/
+li {
+    > ul,
+    > ol {
+        margin-bottom: 0;
+    }
+}
+
+@media @bp2--min {
+    .dl--horizontal {
+        dt {
+            .txt--right;
+            float: left;
+            width: 38.197%;
+            margin-right: @base-spacing;
+        }
+
+        dd {
+            overflow: hidden;
+        }
+    }
+}

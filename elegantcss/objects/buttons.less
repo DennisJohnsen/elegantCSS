@@ -1,0 +1,149 @@
+/*  -------------------------------------
+    BUTTON
+-------------------------------------- */
+
+/*  Basic styles for buttons
+*   Style buttons in your theme stylesheet
+
+*   <a class="btn"></a>
+*   or
+*   <input class="btn" type="submit">
+*/
+
+.include-buttons() when (@include-buttons = false) {
+}
+
+.include-buttons() when (@include-buttons = true) {
+    .btn {
+        &:extend(.txt--center);
+        border-radius: @brand-rounded;
+        line-height: inherit;
+        cursor: pointer;
+        border: none;
+        display: inline-block;
+        padding: @small-spacing @base-spacing;
+        background: @color-ui;
+        color: @font-color;
+        text-decoration: none;
+        
+        &:hover {
+            background: lighten(@color-ui, 5%);
+        }
+
+        &:active {
+            background: darken(@color-ui, 8%);
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            outline: none;
+            text-decoration: none;
+        }
+
+
+        /*  Button modifiers
+        *
+        *   <a class="btn  btn--small"></a>
+        *   or
+        *   <input class="btn  btn--full" type="submit">
+        */
+        &--disabled,
+        &[disabled="disabled"] {
+            cursor: default;
+            opacity: .65;
+            filter: alpha(opacity=65);
+        }
+
+        &--small {
+            padding: (@small-spacing / 2) @small-spacing;
+            .font-size((@font-size * .75))
+        }
+
+        &--large {
+            .font-size((@font-size * 1.5));
+        }
+
+        &--huge {
+            .font-size((@font-size * 2.5));
+        }
+
+        &--full {
+            display: block;
+        }
+
+        &--hard {
+            border-raidus: 0;
+        }
+
+        &--soft {
+            border-raidus: (@base-spacing * 4);
+        }
+        
+        &--inline {
+            vertical-align: baseline;
+            font-size: inherit;
+            padding: 0 ((@small-spacing / 2) - 1);
+        }
+
+
+        /*  Button colors
+        */
+        &--primary,
+        &--success,
+        &--error,
+        &--warning {
+            color: @color-white;
+        }
+
+        &--primary {
+            background: @color-primary;
+
+            &:hover {
+                background: @color-primary--light;
+            }
+
+            &:active {
+                background: @color-primary--dark;
+            }
+        }
+
+        &--success {
+            background: @color-success;
+
+            &:hover {
+                background: @color-success--light;
+            }
+
+            &:active {
+                background: @color-success--dark;
+            }
+        }
+
+        &--error {
+            background: @color-error;
+
+            &:hover {
+                background: mix(@color-error, @color-white, 80%);
+            }
+
+            &:active {
+                background: mix(@color-error, @color-black, 90%);
+            }
+        }
+
+        &--warning {
+            background: @color-warning;
+
+            &:hover {
+                background: @color-warning--light;
+            }
+
+            &:active {
+                background: @color-warning--dark;
+            }
+        }
+    }
+}
+
+.include-buttons;

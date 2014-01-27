@@ -1,0 +1,63 @@
+/*  -------------------------------------
+    QUOTES
+-------------------------------------- */
+//TODO
+
+blockquote {
+    padding: @small-spacing @base-spacing;
+
+    > * {
+        &:extend(.no--margin);
+    }
+
+    p {
+        &:before{
+            content: "\201C";
+        }
+        &:after{
+            content: "\201D";
+        }
+    }
+}
+
+/*
+    #TODO fix fix fix .quote name = no go
+*/
+/*.quote {
+    &:extend(.no--padding);
+    padding-left: (@base-spacing - @brand-rounded);
+    border-left: @brand-rounded solid @color-ui;
+
+    > * {
+        &:before{
+            content: "\201C";
+        }
+        &:after{
+            content: "\201D";
+        }
+    }
+
+    &--right {
+        &:extend(.txt--right, .no--padding);
+        padding-right: (@base-spacing - @brand-rounded);
+        border-right: @brand-rounded solid @color-ui;
+    }
+
+    &--right &__source {
+        &:before {
+            content: "";
+        }
+        &:after {
+            content: "\0020 \2014"
+        }
+    }
+
+    &__source {
+        &:before {
+            content: "\2014 \0020";
+        }
+        &:after {
+            content: "";
+        }
+    }
+}*/
