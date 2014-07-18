@@ -1,12 +1,88 @@
 /*  -------------------------------------
     PAGINATION
--------------------------------------- */
-//#TODO
+    -------------------------------------- */
 
-.include-pagination() when (@include-pagination = false) {
-}
+/*  A really simple pagination object.
+*
+*   <ol class="pagination">
+        <li class="pagination__first">First</li>
+        <li class="pagination__prev">Previous</li>
+        <li><a href="#1">1</a></li>
+        <li><a href="#2">2</a></li>
+        <li class="pagination__current"><a href="#3">3</a></li>
+        <li><buttons type="button">4</button></li>
+        <li><buttons type="button">5</button></li>
+        <li class="pagination__next"><a href="#next">Next</a></li>
+        <li class="pagination__last"><a href="#last">Last</a></li>
+    </ol>
+*/
 
 .include-pagination() when (@include-pagination = true) {
+    .pagination {
+        &:extend(.nav all, .nav--inline all);
+
+        > li {
+            padding: @small-spacing;
+
+            > button {
+                border: 0;
+                background: none;
+                line-height: inherit;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    outline: none;
+                }
+            }
+
+            > a,
+            > button {
+                padding: @small-spacing;
+                margin: (@small-spacing * -1);
+            }
+        }
+
+        &__prev {
+            a,
+            button {
+                &:before {
+                    content: "\2039" "\00A0";
+                }
+            }
+        }
+
+        &__next {
+            a,
+            button {
+                &:after {
+                    content: "\00A0" "\203A";
+                }
+            }
+        }
+
+        &__first {
+            a,
+            button {
+                &:before {
+                    content: "\00AB" "\00A0";
+                }
+            }
+        }
+
+        &__last {
+            a,
+            button {
+                &:after {
+                    content: "\00A0" "\00BB";
+                }
+            }
+        }
+
+        &__active {
+            &:extend(.font-weight--bold);
+        }
+    }
 }
 
 .include-pagination;

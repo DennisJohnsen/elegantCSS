@@ -1,0 +1,197 @@
+/*  Adds some basic styling to tables
+*
+*   <table class="table">
+*/
+.include-tables() when (@include-tables = true) {
+    .table {
+        tbody {
+            th, td {
+                border-top: 1px solid @color-ui;
+            }
+        }
+
+        thead tr:last-child {
+            th, td {
+                border-bottom: 2px solid @color-ui;
+            }
+        }
+
+        tfoot tr:first-child {
+            th, td {
+                border-top: 2px solid @color-ui;
+            }
+        }
+    }
+
+
+    /*  Bordered table
+    *
+    *   <table class="table--bordered">
+    */
+    .table--bordered {
+        th, td {
+            border: 1px solid @color-ui;
+
+            &:empty {
+                border: none!important;
+            }
+        }
+
+        thead tr:last-child th {
+            border-bottom-width: 2px;
+        }
+
+        tbody tr th:last-of-type {
+            border-right-width: 2px;
+        }
+    }
+
+
+    /*  Striped table
+    *
+    *   <table class="table--striped">
+    */
+    .table--striped {
+        tbody tr:nth-of-type(odd) {
+            background-color: mix(@color-ui, white, 25%);
+        }
+    }
+
+    .table--striped-alt {
+        th, td {
+            &:nth-child(even) {
+                background-color: mix(@color-ui, white, 25%);
+            }
+        }
+    }
+
+
+    /*  Data table
+    *
+    *   <table class="table--data">
+    */
+    .table--data {
+        .font-size(12, true);
+        font-family: sans-serif;
+    }
+
+    
+    /*  Hoverable table rows
+    *
+    *   <table class="table--hover">
+    */
+    .table--hover {
+        tbody tr:hover {
+            background-color: mix(@color-ui, white, 25%);
+
+            .table--striped&:nth-of-type(odd) {
+                background-color: mix(@color-ui, white, 60%);
+            }
+
+            .table--striped-alt& {
+                th, td {
+                    &:nth-child(even) {
+                        background-color: mix(@color-ui, white, 60%);
+                    }
+                }
+            }
+        }
+    }
+
+
+    /*  Responsive table with data attribute
+    *
+    *   This method needs ´data-th=""´ attribute on the td, in order for it
+    *   to work. Content is retrived from the data attribute
+    *
+    *   <table class="table  table--responsive">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Name">Dennis</td>
+                    <td data-th="Age">24</td>
+                </tr>
+                <tr>
+                    <td data-th="Name">Kenneth</td>
+                    <td data-th="Age">28</td>
+                </tr>
+            </tbody>
+        </table>
+    */
+    .table--responsive {
+        thead, th {
+            display: none;
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid @color-ui;
+
+                &:last-child {
+                    border: none;
+                }
+            }
+
+            td {
+                &:extend(.cf all);
+                display: block;
+                vertical-align: top;
+                border: none;
+
+                &:before {
+                    &:extend(.font-weight--bold);
+                    content: attr(data-th)": ";
+                    width: 38.2%; //Fibonacci's golden section
+                    display: inline-block;
+                    float: left;
+                    margin-right: @small-spacing;
+
+                    @media @bp2--min {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.table--bordered {
+            tbody {
+                tr:last-child {
+                    border-bottom: 1px solid @color-ui;
+                }
+
+                td {
+                    border: 1px solid @color-ui;
+                    border-bottom: 0;
+                }
+            }
+        }
+
+        @media @bp2--min {
+            thead {
+                display: table-header-group;
+            }
+
+            tbody, thead {
+                th, td {
+                    display: table-cell;
+
+                    &:before,
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+
+            &.table--bordered {
+                .table--bordered;
+            }
+        }
+    }
+}
+
+.include-tables;

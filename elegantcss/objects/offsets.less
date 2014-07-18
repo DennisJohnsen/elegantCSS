@@ -5,12 +5,10 @@
 /*  Offset grid columns 
 *
 *   <div class="row">
-*       <div class="col--3  offset--2"></div>
-*       <div class="col--6  offset--1"></div>
-*   </div>
+        <div class="col--3  offset--2"></div>
+        <div class="col--6  offset--1"></div>
+    </div>
 */
-.include-grid-offset() when (@include-grid-offset = false) {
-}
 
 .include-grid-offset() when (@include-grid-offset = true) {
 
@@ -20,13 +18,10 @@
     /*  Responsive offset grid columns
 
     *   <div class="row">
-    *       <div class="col--3  offset--2  bp2-offset--1"></div>
-    *       <div class="col--6  offset--1  bp2-offset--2"></div>
-    *   </div>
+            <div class="col--3  offset--2  bp2-offset--1"></div>
+            <div class="col--6  offset--1  bp2-offset--2"></div>
+        </div>
     */
-
-    .responsive-offsets() when (@responsive = false) {
-    }
 
     .responsive-offsets() when (@responsive = true) {
         @media @bp1--min {

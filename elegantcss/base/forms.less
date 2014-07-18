@@ -3,12 +3,34 @@
 -------------------------------------- */
 /*  #TODO
 */
+fieldset {
+    padding: @base-spacing;
+    border: 1px solid @color-ui;
+}
+
 label, input, textarea, button, select, option {
     cursor: pointer;
 }
 
-.txt-input,
-textarea {
+button, input {
+    line-height: normal;
+}
+
+
+/*  Text inputs
+*
+*   Instead of a [type] selector for each kind of form input, we just use a
+*   class to target any/every one
+*
+*   <input type="text" class="text-input">
+*/
+.text-input,
+textarea,
+select {
+    display: block;
+    width: 100%;
+    border: 1px solid @color-ui;
+
     &:active,
     &:focus {
         cursor: text;
@@ -16,15 +38,109 @@ textarea {
     }
 }
 
-fieldset {
-    padding: @base-spacing;
-}
 
-button, input {
-    line-height: normal;
-}
-
+/*  Labels
+*
+*   Define a ".label" class as well as a "label" element. This means we can apply
+*   label-like styling to meta-labels for groups of options where a "label"
+*   element is not suitable
+*
+*   <span class="label">This is a label</span>
+*/
 label,
 .label {
     display: block;
+}
+
+
+/*  Additional label info
+*
+*   <label>Card number <small class="additional">No spaces</small></label>
+*/
+.additional {
+    display: block;
+    font-weight: normal;
+}
+
+
+/*  Group sets of form fields in a list
+*
+*   <ul class="form-fields">
+        <li>
+            <label />
+            <input />
+        </li>
+    </ul>
+*/
+.form-fields {
+    list-style: none;
+    margin: 0;
+
+    > li {
+        &:extend(.margin--bottom);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/*  Groups of checkboxes and radios
+*
+*   <ul class="check-list">
+        <li>
+            <input />
+            <label>Stuff</label>
+        </li>
+    </ul>
+*/
+.check-list {
+    &:extend(.form-fields);
+
+    input {
+        float: left;
+        margin-right: (@small-spacing / 2);
+        height: @base-spacing;
+    }
+
+    label {
+        overflow: hidden;
+    }
+}
+
+
+/*  Spoken forms are for forms that read like spoken word
+*
+*   <li class=spoken-form>
+        Hello, my <label for="spoken-name">name</label> is
+        <input type="text" class="text-input" id="spoken-name">. My home
+        <label for="spoken-country">country</label> is
+        <select id="spoken-country">
+            <option>DK</option>
+            <option>EN</option>
+            <option>US</option>
+       </select>
+    </li>
+*/
+.spoken-form label {
+    display: inline-block;
+    font: inherit;
+}
+
+
+/*  Extra help text displayed after a field when that field is in focus
+*
+*   <label for="email">Email:</label>
+    <input type="email" class="text-input" id="email">
+    <small class="extra-help">@gmail.com emails only</small>
+*/
+.extra-help {
+    display: inline-block;
+    visibility: hidden;
+
+    .text-input:active + &,
+    .text-input:focus + & {
+        visibility: visible;
+    }
 }

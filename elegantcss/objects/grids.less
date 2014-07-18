@@ -1,21 +1,20 @@
 /*  -------------------------------------
     GRIDS
 -------------------------------------- */
-.include-grid() when (@include-grid = false) {}
+
+/*  Fluid & nestable grid system
+
+*   Mobile first approach. Keep in mind that col--1, col--2
+*   and col--3 might be too small for mobile portrait.
+
+*   <div class="row  row--narrow">
+        <div class="col  col--2"></div>
+        <div class="col  col--6"></div>
+        <div class="col  col--4"></div>
+    </div>
+*/
 
 .include-grid() when (@include-grid = true) {
-
-    /*  Fluid & nestable grid system
-
-    *   Mobile first approach. Keep in mind that col--1, col--2
-    *   and col--3 might be too small for mobile portrait.
-
-    *   <div class="row  row--narrow">
-    *       <div class="col  col--2"></div>
-    *       <div class="col  col--6"></div>
-    *       <div class="col  col--4"></div>
-    *   </div>
-    */
     .row {
         .cf;
         list-style: none;
@@ -35,12 +34,11 @@
     /*  Responsive grid
 
     *   <div class="row  row--sticky  bp2-row--narrow">
-    *       <div class="col  col--6  bp2-col--4 "></div>
-    *       <div class="col  col--6  bp2-col--4  bp3-col--3"></div>
-    *       <div class="col  col--6  bp3-col--4  bp3-col--3  bp4-col--2"></div>
-    *   </div>
+            <div class="col  col--6  bp2-col--4 "></div>
+            <div class="col  col--6  bp2-col--4  bp3-col--3"></div>
+            <div class="col  col--6  bp3-col--4  bp3-col--3  bp4-col--2"></div>
+        </div>
     */
-    .responsive-grids() when (@responsive = false) {}
 
     .responsive-grids() when (@responsive = true) {
         @media @bp1--min {

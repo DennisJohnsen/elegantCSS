@@ -3,59 +3,40 @@
 -------------------------------------- */
 /*  .class {
 *       .font-size(20);
-*       .font-size--no-baseline(12);
+*       .font-size(20, true); //for baseline line-height
 *   }
 */
-.font-size(@value: @font-size) {
+.font-size(@value: @font-size, @baseline: false) {
     font-size: (@value * 1px);
-    font-size: ((@value / @font-size) * 1rem);
-    line-height: (ceil(@value / @line-height)*(@line-height / @value));
-}
+    font-size: unit((@value / @font-size), rem);
 
-.font-size--no-baseline(@value: @font-size) {
-    font-size: (@value * 1px);
-    font-size: ((@value / @font-size) * 1rem);
+    .baseline() when (@baseline = true) {
+        line-height: (ceil(@value / @line-height)*(@line-height / @value));
+    }
+
+    .baseline;
 }
 
 
 /*  .class {
-*       .responsive-font(0em, 80em, 16, 200);
+*       .responsive-font-size(0em, 80em, 16, 200);
 *       .responsive-font--no-baseline(0em, 80em, 16, 200);
 *   }
 */
-.responsive-font(@min: @bp0--max-em, @max: @bp4--min-em, @start: @font-size, @end: @h1, @inc: 2, @offset: 0) when ((@min + @offset) =< @max) {
+.responsive-font-size(@min: @bp0--max-em, @max: @bp4--min-em, @start: @font-size, @end: @h1, @inc: 2, @offset: 1) when ((@min + @offset) =< (@max)) {
     .font-size(@start);
+
     @media only screen and(min-width: (@min + @offset)) {
         .font-size((@start + ((@offset / (@max - @min)) * (@end - @start))));
     }
-    .responsive-font(@min, @max, @start, @end, @inc, (@offset + @inc));
-}
 
-.responsive-font--no-baseline(@min, @max, @start, @end, @inc: 2, @offset: 0) when ((@min + @offset) =< @max) {
-    .font-size--no-baseline(@start);
-    @media only screen and(min-width: (@min + @offset)) {
-        .font-size--no-baseline((@start + ((@offset / (@max - @min)) * (@end - @start))));
-    }
-    .responsive-font--no-baseline(@min, @max, @start, @end, @inc, (@offset + @inc));
-}
-
-
-.text-size-adjust(@value: none) {
-    -webkit-text-size-adjust: @value;
-    -moz-text-size-adjust: @value;
-    -ms-text-size-adjust: @value;
-    -o-text-size-adjust: @value;
-    text-size-adjust: @value;
-}
-
-.box-sizing(@value: border-box) {
-    -webkit-box-sizing: @value;
-    -moz-box-sizing: @value;
-    box-sizing: @value;
+    .responsive-font-size(@min, @max, @start, @end, @inc, (@offset + @inc));
 }
 
 
 /*  Grid
+*   
+*   Used to generate the grid if you have set "@include-grid" to true
 */
 .rows(@prefix: ~"row") {
     .@{prefix} {
@@ -102,6 +83,11 @@
     .col-loop;
 }
 
+/*  Grid push, pull, offset
+*   
+*   Used to generate the grid if you have set "@include-grid-pushpull" or "@include-grid-offset" to true
+*/
+
 .pushs(@prefix: ~"push--") {
     .push-loop(@cols: @grid-columns, @index: 0) when (@index =< @cols) {
         .@{prefix}@{index} {
@@ -147,7 +133,7 @@
 .grid-row(@gutter: normal) {
     &:extend(.row all);
     
-    .grid-gutter-width() when (@gutter = normal) {
+    .grid-gutter-size() when (@gutter = normal) {
         margin-left: (@grid-gutter--value * -1);
 
         > * {
@@ -155,7 +141,7 @@
         }
     }
 
-    .grid-gutter-width() when (@gutter = narrow) {
+    .grid-gutter-size() when (@gutter = narrow) {
         margin-left: (@grid-gutter--half * -1);
 
         > * {
@@ -163,7 +149,7 @@
         }
     }
 
-    .grid-gutter-width() when (@gutter = sticky) {
+    .grid-gutter-size() when (@gutter = sticky) {
         margin-left: 0;
 
         > * {
@@ -171,7 +157,7 @@
         }
     }
 
-    .grid-gutter-width() when (@gutter = custom) {
+    .grid-gutter-size() when (@gutter = custom) {
         margin-left: (@grid-gutter--custom-value * -1);
 
         > * {
@@ -179,15 +165,15 @@
         }
     }
 
-    .grid-gutter-width;
+    .grid-gutter-size;
 }
 
 .grid-col(@col: @grid-columns) {
     &:extend(.col);
 
-    .grid-col-width() when (isnumber(@col)) and (@col =< @grid-columns) {
+    .grid-col-size() when (isnumber(@col)) and (@col =< @grid-columns) {
         width: round(percentage(((1 / @grid-columns) * @col)), 4);
     }
 
-    .grid-col-width;
+    .grid-col-size;
 }

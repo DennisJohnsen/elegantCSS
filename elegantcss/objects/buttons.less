@@ -1,5 +1,5 @@
 /*  -------------------------------------
-    BUTTON
+    BUTTONS
 -------------------------------------- */
 
 /*  Basic styles for buttons
@@ -8,15 +8,14 @@
 *   <a class="btn"></a>
 *   or
 *   <input class="btn" type="submit">
+*   or
+*   <button class="btn" type="button"></button>
 */
-
-.include-buttons() when (@include-buttons = false) {
-}
 
 .include-buttons() when (@include-buttons = true) {
     .btn {
-        &:extend(.txt--center);
-        border-radius: @brand-rounded;
+        &:extend(.text-align--center);
+        .transition(background .2s ease);
         line-height: inherit;
         cursor: pointer;
         border: none;
@@ -41,108 +40,152 @@
             text-decoration: none;
         }
 
+        .include-brand--btn() when (@brand = true) {
+            .border-radius(@brand-rounded);
+        }
 
-        /*  Button modifiers
-        *
-        *   <a class="btn  btn--small"></a>
-        *   or
-        *   <input class="btn  btn--full" type="submit">
-        */
-        &--disabled,
-        &[disabled="disabled"] {
+        .include-brand--btn;
+    }
+
+
+    /*  Button modifiers
+    *
+    *   <a class="btn  btn--full"></a>
+    *   or
+    *   <input class="btn  btn--full" type="submit">
+    *   or
+    *   <button class="btn  btn--full" type="button"></button>
+    */
+
+    .btn--small {
+        .font-size((@font-size * .75));
+        padding: (@small-spacing / 4) @small-spacing;
+    }
+
+    .btn--large {
+        .font-size((@font-size * 1.5));
+        padding: (@small-spacing * 1.5) (@base-spacing * 1.5);
+    }
+
+    .btn--huge {
+        .font-size((@font-size * 2.5));
+        padding: (@small-spacing * 1.5) (@base-spacing * 1.5);
+    }
+
+    .btn--full {
+        display: block;
+    }
+
+    .btn--hard {
+        .border-radius(0);
+    }
+
+    .btn--pill {
+        border-raidus: (@large-spacing * 4);
+    }
+
+    .btn--pill-right {
+        border-radius: 0 (@large-spacing * 4) (@large-spacing * 4) 0;
+    }
+
+    .btn--pill-left {
+        border-radius: (@large-spacing * 4) 0 0 (@large-spacing * 4);
+    }
+    
+    .btn--inline {
+        vertical-align: baseline;
+        font-size: inherit;
+        padding: 0 ((@small-spacing / 2) - 1);
+    }
+
+
+    /*  Button functions
+    */
+    
+    .btn--primary,
+    .btn--success,
+    .btn--danger,
+    .btn--warning {
+        color: #fff;
+    }
+
+    .btn--primary {
+        background: @color-primary;
+
+        &:hover {
+            background: mix(@color-primary, #fff, 85%);
+        }
+
+        &:active {
+            background: mix(@color-primary, #000, 90%);
+        }
+    }
+
+    .btn--success {
+        background: @color-success;
+
+        &:hover {
+            background: mix(@color-success, #fff, 85%);
+        }
+
+        &:active {
+            background: mix(@color-success, #000, 90%);
+        }
+    }
+
+    .btn--danger {
+        background: @color-danger;
+
+        &:hover {
+            background: mix(@color-danger, #fff, 85%);
+        }
+
+        &:active {
+            background: mix(@color-danger, #000, 90%);
+        }
+    }
+
+    .btn--warning {
+        background: @color-warning;
+
+        &:hover {
+            background: mix(@color-warning, #fff, 85%);
+        }
+
+        &:active {
+            background: mix(@color-warning, #000, 90%);
+        }
+    }
+    
+    .include-brand--btn() when (@brand = true) {
+        .btn--brand {
+            background: @brand-color;
+
+            &:hover {
+                background: mix(@brand-color, #fff, 85%);
+            }
+
+            &:active {
+                background: mix(@brand-color, #000, 90%);
+            }
+        }
+    }
+
+    .include-brand--btn;
+
+    .btn--disabled { 
+        &,
+        &:active,
+        &:hover {
+            .transition(none);
+            color: darken(@color-ui, 30%);
             cursor: default;
-            opacity: .65;
-            filter: alpha(opacity=65);
+            background: lighten(@color-ui, 5%);
         }
+    }
 
-        &--small {
-            padding: (@small-spacing / 2) @small-spacing;
-            .font-size((@font-size * .75))
-        }
-
-        &--large {
-            .font-size((@font-size * 1.5));
-        }
-
-        &--huge {
-            .font-size((@font-size * 2.5));
-        }
-
-        &--full {
-            display: block;
-        }
-
-        &--hard {
-            border-raidus: 0;
-        }
-
-        &--soft {
-            border-raidus: (@base-spacing * 4);
-        }
-        
-        &--inline {
-            vertical-align: baseline;
-            font-size: inherit;
-            padding: 0 ((@small-spacing / 2) - 1);
-        }
-
-
-        /*  Button colors
-        */
-        &--primary,
-        &--success,
-        &--error,
-        &--warning {
-            color: @color-white;
-        }
-
-        &--primary {
-            background: @color-primary;
-
-            &:hover {
-                background: @color-primary--light;
-            }
-
-            &:active {
-                background: @color-primary--dark;
-            }
-        }
-
-        &--success {
-            background: @color-success;
-
-            &:hover {
-                background: @color-success--light;
-            }
-
-            &:active {
-                background: @color-success--dark;
-            }
-        }
-
-        &--error {
-            background: @color-error;
-
-            &:hover {
-                background: mix(@color-error, @color-white, 80%);
-            }
-
-            &:active {
-                background: mix(@color-error, @color-black, 90%);
-            }
-        }
-
-        &--warning {
-            background: @color-warning;
-
-            &:hover {
-                background: @color-warning--light;
-            }
-
-            &:active {
-                background: @color-warning--dark;
-            }
-        }
+    .btn[disabled="disabled"] {
+        &:extend(.btn--disabled all);
     }
 }
 

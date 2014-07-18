@@ -3,9 +3,14 @@
 -------------------------------------- */
 
 code, pre {
-    border-radius: @brand-rounded;
-    font-family: @font-code;
+    font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
     background: @color-ui;
+
+    .include-brand--code() when (@brand = true) {
+        .border-radius(@brand-rounded);
+    }
+
+    .include-brand--code;
 }
 
 code {

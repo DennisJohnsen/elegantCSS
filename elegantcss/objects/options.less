@@ -1,0 +1,76 @@
+/*  -------------------------------------
+    OPTIONS
+-------------------------------------- */
+
+/*  A grouped set of links/buttons, used to display related options.
+*
+*   <ul class="options">
+        <li><a href=""></a></li>
+        <li class="options__active"><a href=""></a></li>
+        <li><buttons type="button"></button></li>
+        <li><buttons type="button"></button></li>
+    </ul>
+*/
+
+.include-options() when (@include-options = true) {
+    .options {
+        &:extend(.nav all, .nav--inline all);
+
+        > li {
+            > button {
+                line-height: inherit;
+                background: none;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    outline: none;
+                }
+            }
+
+            > a,
+            > button {
+                padding: @small-spacing;
+                border: 1px solid @color-ui;
+                border-left-width: 0;
+
+                &:hover {
+                    //Style this in your theme styles
+                }
+            }
+
+            &:first-child {
+                > a,
+                > button {
+                    border-left-width: 1px;
+                }
+            }
+        }
+
+        &__active {
+            &:extend(.font-weight--bold);
+        }
+
+        .include-brand--options() when (@brand = true) {
+            > li {
+                &:first-child {
+                    > a,
+                    > button {
+                        .border-radius(@brand-rounded 0 0 @brand-rounded);
+                    }
+                }
+
+                &:last-child {
+                    > a,
+                    > button {
+                        .border-radius(0 @brand-rounded @brand-rounded 0);
+                    }
+                }
+            }
+        }
+
+        .include-brand--options;
+    }
+}
+
+.include-options;

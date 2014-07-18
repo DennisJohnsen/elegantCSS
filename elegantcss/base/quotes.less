@@ -1,63 +1,79 @@
 /*  -------------------------------------
     QUOTES
 -------------------------------------- */
-//TODO
+
+/*  #TODO
+*
+*   <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer class="source">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+*/
+@blockquote-text-indent: -0.36em;
 
 blockquote {
     padding: @small-spacing @base-spacing;
-
-    > * {
-        &:extend(.no--margin);
-    }
+    text-indent: @blockquote-text-indent;
 
     p {
-        &:before{
-            content: "\201C";
+        text-indent: 0;
+
+        &:first-of-type {
+            text-indent: @blockquote-text-indent;
+
+            &:before {
+                content: "\201C";
+            }
         }
-        &:after{
-            content: "\201D";
+
+        &:last-of-type {
+            &:extend(.no--margin);
+
+            &:after {
+                content: "\201D";
+            }
         }
     }
 }
 
-/*
-    #TODO fix fix fix .quote name = no go
-*/
-/*.quote {
-    &:extend(.no--padding);
-    padding-left: (@base-spacing - @brand-rounded);
-    border-left: @brand-rounded solid @color-ui;
+q {
+    quotes: "\2018" "\2019" "\00BB" "\00AB";
 
-    > * {
-        &:before{
-            content: "\201C";
-        }
-        &:after{
-            content: "\201D";
-        }
+    &:before {
+        content: "\2018";
+    }
+    &:after {
+        content: "\2019";
     }
 
-    &--right {
-        &:extend(.txt--right, .no--padding);
-        padding-right: (@base-spacing - @brand-rounded);
-        border-right: @brand-rounded solid @color-ui;
+    q:before {
+        content: "\00BB";
+    }
+    q:after {
+        content: "\00AB";
     }
 
-    &--right &__source {
-        &:before {
-            content: "";
-        }
-        &:after {
-            content: "\0020 \2014"
-        }
+    &:before,
+    q:before {
+        content: open-quote;
     }
 
-    &__source {
-        &:before {
-            content: "\2014 \0020";
-        }
-        &:after {
-            content: "";
-        }
+    &:after,
+    q:after {
+        content: close-quote;
     }
-}*/
+}
+
+.source {
+    display: block;
+    text-indent: 0;
+
+    &:before {
+        content: "\2014";
+        margin-right: (@small-spacing / 2);
+    }
+
+    &--rev {
+        &:extend(.float--right);
+    }
+}

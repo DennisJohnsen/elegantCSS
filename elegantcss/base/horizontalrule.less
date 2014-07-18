@@ -2,14 +2,14 @@
     HORISONTAL RULE
 -------------------------------------- */
 
-hr {
+.hr {
+    color: @color-ui;
     border: none;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: @color-ui;
+    border-bottom: 1px solid @color-ui;
     margin-bottom: (@base-spacing - 1);
-    margin-bottom: (((@line-height - 1) / @font-size) * 1rem);
+    margin-bottom: unit(((@line-height - 1) / @font-size), rem);
 }
+
 
 /*  Dotted horizontal rule style
 */
@@ -17,20 +17,23 @@ hr {
     border-bottom-style: dotted;
 }
 
+
 /*  Dashed horizontal rule style
 */
 .hr--dashed {
     border-bottom-style: dashed;
 }
 
+
 /*  Even more whitespace
 */
 .hr--more {
-    margin-top: (@large-line-height * 1px);
-    margin-top: ((@large-line-height / @font-size) * 1rem);
-    margin-bottom: ((@large-line-height - 1) * 1px);
-    margin-bottom: (((@large-line-height - 1) / @font-size) * 1rem);
+    margin-top: @large-spacing;
+    margin-top: unit((@large-spacing / @font-size), rem);
+    margin-bottom: (@large-spacing - 1);
+    margin-bottom: unit(((@large-spacing - 1) / @font-size), rem);
 }
+
 
 /*  Not as wide horizontal rule
 */

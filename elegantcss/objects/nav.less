@@ -3,35 +3,68 @@
 -------------------------------------- */
 
 /*  <ul class="nav">
-*      <li><a href=""></a></li>
-*  </ul>
+       <li><a href="#">Home</a></li>
+       <li><a href="#">About</a></li>
+       <li><a href="#">Work</a></li>
+       <li><a href="#">Blog</a></li>
+       <li><a href="#">Contact</a></li>
+   </ul>
 */
-.include-nav() when (@include-nav = false) {
-}
 
 .include-nav() when (@include-nav = true) {
     .nav {
+        &:extend(.no--margin);
         list-style: none;
-        margin-left: 0;
 
-        li, a {
-            display: inline-block;
+        > li {
+            &,
+            > a {
+                display: inline-block;
+            }
         }
     }
+    
+    /*  Removes the pesky space between the <li>'s
+    *
+    *   <ul class="nav  nav--inline"></ul>
+    */
+    .nav--inline {
+        font-size: 0;
+
+        > li {
+            .font-size(@font-size);
+        }
+    }
+
+
+    /*  Gives your navigation buttons a larger hit area
+    *
+    *   <ul class="nav  nav--block"></ul>
+    */
+    .nav--block {
+        &:extend(.nav--inline all);
+        white-space: nowrap;
+
+        > li > a {
+            padding: @small-spacing;
+        }
+    }
+
 
     /*  Stacks the lists in a vetical navigation
     *
-    *   <ul class="nav nav--vertical"></ul>
+    *   <ul class="nav  nav--stacked"></ul>
     */
-    .nav--vertical {
-        li {
+    .nav--stacked {
+        > li {
             display: list-item;
-        }
 
-        a {
-            display: block;
+            > a {
+                display: block;
+            }
         }
     }
+
 
     /*  Centers the lists 
     */
@@ -39,9 +72,27 @@
         text-align: center;
     }
 
+    
+    /*  Fills all nav items to same width
+    *
+    *   <ul class="nav  nav--fit"></ul>
+    */
+    .nav--fit {
+        display: table;
+        width: 100%;
+
+        > li {
+            display: table-cell;
+
+            > a {
+                display: block;
+            }
+        }
+    }
+
     /*  Adds a seperator 
     *
-    *   <ul class="nav nav--breadcrumb"></ul>
+    *   <ul class="nav  nav--breadcrumb"></ul>
     */
     .nav--breadcrumb {
         li {

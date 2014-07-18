@@ -1,27 +1,34 @@
-/*  TABLE OF CONTENTS
---------------------------------------- */
+/*  -------------------------------------
+    {Elegant CSS}
+-------------------------------------- */
 // #TODO
 
 
-/*  CONFIG
---------------------------------------- */
-@import "config";
+/*  -------------------------------------
+    TABLE OF CONTENT
+-------------------------------------- */
+// #TODO
 
 
+/*  -------------------------------------
+    IMPORTS
+-------------------------------------- */
+@import "defaults";
 
-/*  SETUP
---------------------------------------- */
+
+/*  Setup
+*/
 @import "setup/vars";
 @import "setup/mixins";
+@import "setup/lesshat";
 @import "setup/normalize";
 @import "setup/clearfix";
 @import "setup/shared";
-@import "setup/extends";
 
 
-
-/*  BASE
---------------------------------------- */
+/*  Base
+*/
+@import "base/utilities";
 @import "base/main";
 @import "base/headers";
 @import "base/lists";
@@ -35,16 +42,17 @@
 @import "base/miscellaneous";
 
 
-
-/*  OBJECTS & CLASSES
---------------------------------------- */
+/*  Object & Classes
+*/
+@import "objects/img";
 @import "objects/buttons";
+@import "objects/tables";
 @import "objects/nav";
 @import "objects/breadcrumb";
 @import "objects/pagination";
-@import "objects/mediaobject";
+@import "objects/options";
 @import "objects/box";
+@import "objects/mediaobject";
 @import "objects/grids";
 @import "objects/offsets";
 @import "objects/pushpull";
-@import "objects/responsive";

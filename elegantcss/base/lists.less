@@ -5,7 +5,7 @@
 ul, ol, dd {
     &:extend(.margin--bottom);
     margin-left: @large-spacing;
-    margin-left: ((@large-line-height / @font-size) * 1rem);
+    margin-left: unit((@large-spacing / @font-size), rem);
 }
 
 /*  To remove the vertical spacing from nested lists.
@@ -20,7 +20,7 @@ li {
 @media @bp2--min {
     .dl--horizontal {
         dt {
-            .txt--right;
+            .text-align--right;
             float: left;
             width: 38.197%;
             margin-right: @base-spacing;

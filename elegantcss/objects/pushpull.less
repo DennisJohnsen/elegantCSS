@@ -5,13 +5,10 @@
 /*  Push/Pull grid columns 
 
 *   <div class="row">
-*       <div class="col--4  push--8"></div>
-*       <div class="col--8  pull--4"></div>
-*   </div>
+        <div class="col--4  push--8"></div>
+        <div class="col--8  pull--4"></div>
+    </div>
 */
-
-.include-grid-pushpull() when (@include-grid-pushpull = false) {
-}
 
 .include-grid-pushpull() when (@include-grid-pushpull = true) {
     .pushs;
@@ -21,12 +18,10 @@
     /*  Responsive Push/Pull grid columns
 
     *   <div class="row">
-    *       <div class="col--4  push--8  bp2-col--8  bp2-push--4"></div>
-    *       <div class="col--8  pull--4  bp2-col--4  bp2-pull--8"></div>
-    *   </div>
+            <div class="col--4  push--8  bp2-col--8  bp2-push--4"></div>
+            <div class="col--8  pull--4  bp2-col--4  bp2-pull--8"></div>
+        </div>
     */
-    .responsive-pushpull() when (@responsive = false) {
-    }
 
     .responsive-pushpull() when (@responsive = true) {
         @media @bp1--min {

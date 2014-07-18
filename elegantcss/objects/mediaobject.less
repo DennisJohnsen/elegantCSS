@@ -5,28 +5,23 @@
 /*  #TODO
 *
 *   <div class="media">
-*       <img class="media_img" src="" alt="">
-*       <div class="media_body"></div>
-*   </div>
+        <img class="media__img" src="" alt="">
+        <div class="media__body"></div>
+    </div>
 */
-
-.include-mediaobject() when (@include-mediaobject = false) {
-}
 
 .include-mediaobject() when (@include-mediaobject = true) {
     .media {
         .cf;
         display: block;
-
-        &__img {
-            &:extend(.float--left);
-            margin-right: @base-spacing;
-        }
-
-        &__body {
-            overflow: hidden;
-            display: block;
-        }
+    }
+    .media__img {
+        &:extend(.float--left);
+        margin-right: @base-spacing;
+    }
+    .media__body {
+        overflow: hidden;
+        display: block;
     }
 
     /*  Move the image to the right instead.

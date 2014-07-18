@@ -1,10 +1,12 @@
 /*  -------------------------------------
     VARIABLES
 -------------------------------------- */
+/* Various variables used across the framework. Please use, but please dont edit.
+*/
 
 /*  Base font variables
 */
-@font-size-em: ((@font-size / 16) * 1em);
+@font-size-em: unit((@font-size / 16), em);
 @line-height-value: (@line-height / @font-size);
 
 
@@ -12,26 +14,23 @@
 *   We use the line-height variable to keep consistency on our base line.
 */
 @small-spacing: (@base-spacing / 2);
-@base-spacing: (@line-height * 1px);
+@base-spacing: unit(@line-height, px);
 @large-spacing: (@base-spacing * 2);
 
-@small-line-height: (@line-height / 2);
-@large-line-height: (@line-height * 2);
 
-
-/*  Responsive Webdesign Breakpoints (in em's)
+/*  Responsive breakpoints (in em's)
 */
-@bp1--min-em: ((@bp1 / 16) * 1em);
-@bp2--min-em: ((@bp2 / 16) * 1em);
-@bp3--min-em: ((@bp3 / 16) * 1em);
-@bp4--min-em: ((@bp4 / 16) * 1em);
-@bp5--min-em: ((@bp5 / 16) * 1em);
+@bp1--min-em: unit((@bp1 / 16), em);
+@bp2--min-em: unit((@bp2 / 16), em);
+@bp3--min-em: unit((@bp3 / 16), em);
+@bp4--min-em: unit((@bp4 / 16), em);;
+@bp5--min-em: unit((@bp5 / 16), em);
 
-@bp0--max-em: (((@bp1 - 1) / 16) * 1em);
-@bp1--max-em: (((@bp2 - 1) / 16) * 1em);
-@bp2--max-em: (((@bp3 - 1) / 16) * 1em);
-@bp3--max-em: (((@bp4 - 1) / 16) * 1em);
-@bp4--max-em: (((@bp5 - 1) / 16) * 1em);
+@bp0--max-em: unit(((@bp1 - 1) / 16), em);
+@bp1--max-em: unit(((@bp2 - 1) / 16), em);
+@bp2--max-em: unit(((@bp3 - 1) / 16), em);
+@bp3--max-em: unit(((@bp4 - 1) / 16), em);
+@bp4--max-em: unit(((@bp5 - 1) / 16), em);
 
 
 /*  Media Queries
@@ -60,35 +59,3 @@
 @grid-gutter--value: (@grid-gutter * 1px);
 @grid-gutter--half: (@grid-gutter--value / 2);
 @grid-gutter--custom-value: (@grid-gutter--custom * 1px);
-
-
-/*  Cols (in percentages)
-*/
-/*
-@col-1: 8.333%;
-@col-2: 16.666%;
-@col-3: 25%;
-@col-4: 33.333%;
-@col-5: 41.666%;
-@col-6: 50%;
-@col-7: 58.333%;
-@col-8: 66.666%;
-@col-9: 75%;
-@col-10: 83.333%;
-@col-11: 91.666%;
-@col-12: 100%;
-*/
-
-
-/*  Colors
-*/
-@color-grey--light:     #ecf0f1;
-@color-grey--dark:      #95a5a6;
-@color-primary--light:  #4eaff1;
-@color-primary--dark:   #197dbf;
-@color-success--light:  #48e68b;
-@color-success--dark:   #16b258;
-@color-warning--light:  #ffb238;
-@color-warning--dark:   #e67e22;
-@color-error--light:   #ff6050;
-@color-error--dark:    #ca2f1f;

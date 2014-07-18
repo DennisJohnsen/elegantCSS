@@ -1,0 +1,250 @@
+/*  -------------------------------------
+    EXTENDS
+-------------------------------------- */
+
+/*  Random utilities
+*/
+.border-box {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+/*  Toggling content
+*/
+.hide {
+    display: none!important;
+}
+
+.show {
+    display: block!important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.hide-text {
+    text-indent: 102%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+/*  Floats
+*/
+.clearfix {
+    &:extend(.cf all);
+}
+
+.float--left {
+    float: left;
+}
+
+.float--right {
+    float: right;
+}
+
+.float--none {
+    float: none;
+}
+
+
+/*  Font weights
+*/
+.font-weight--light {
+    font-weight: 300;
+}
+
+.font-weight--normal {
+    font-weight: normal;
+}
+
+.font-weight--semibold {
+    font-weight: 600;
+}
+
+.font-weight--bold {
+    font-weight: bold;
+}
+
+
+/*  Text styles and alignment
+*/
+.font-style--italic {
+    font-style: italic;
+}
+
+.font-style--normal {
+    font-style: normal;
+}
+
+.text-align--left {
+    text-align: left;
+}
+
+.text-align--center {
+    text-align: center;
+}
+
+.text-align--right {
+    text-align: right;
+}
+
+.text-align--justify {
+    text-align: justify;
+}
+
+.vertical-align--top {
+    vertical-align: top;
+}
+
+.vertical-align--middle {
+    vertical-align: middle;
+}
+
+.vertical-align--bottom {
+    vertical-align: bottom;
+}
+
+
+/*  Layouts
+*/
+.center {
+    margin: 0 auto;
+    display: block;
+}
+
+.no--margin {
+    margin: 0;
+}
+
+.no--padding {
+    padding: 0;
+}
+
+.margin--top {
+    margin-top: @base-spacing;
+    margin-top: unit((@line-height / @font-size), rem);
+}
+
+.margin--left {
+    margin-left: @base-spacing;
+    margin-left: unit((@line-height / @font-size), rem);
+}
+
+.margin--right {
+    margin-right: @base-spacing;
+    margin-right: unit((@line-height / @font-size), rem);
+}
+
+
+/*  Responsive utility classes
+*/
+.responsive-utilities() when (@responsive = true) {
+    @media @bp0--max {
+        .hide--bp0 {
+            display: none!important;
+        }
+    }
+
+    /*  Mobile landscape
+    */
+    .breakpoint() when (@responsive-bp2 = true) {
+        @media @bp1--min-max {
+             .hide--bp1 {
+                display: none!important;
+            }
+        }
+    }
+    .breakpoint() when not(@responsive-bp2 = true) {
+        @media @bp1--min {
+             .hide--bp1 {
+                display: none!important;
+            }
+        }
+    }
+    .breakpoint;
+
+    /*  Tablet portrait
+    */
+    .responsive-utilities() when (@responsive-bp2 = true) {
+        .breakpoint() when (@responsive-bp3 = true) {
+            @media @bp2--min-max {
+                 .hide--bp2 {
+                    display: none!important;
+                }
+            }
+        }
+        .breakpoint() when not(@responsive-bp3 = true) {
+            @media @bp2--min {
+                 .hide--bp2 {
+                    display: none!important;
+                }
+            }
+        }
+        .breakpoint;
+
+        /*  Tablet landscape & small desktop
+        */
+        .responsive-utilities() when (@responsive-bp3 = true) {
+            .breakpoint() when (@responsive-bp4 = true) {
+                @media @bp3--min-max {
+                     .hide--bp3 {
+                        display: none!important;
+                    }
+                }
+            }
+            .breakpoint() when not(@responsive-bp4 = true) {
+                @media @bp3--min {
+                     .hide--bp3 {
+                        display: none!important;
+                    }
+                }
+            }
+            .breakpoint;
+
+            /*  Large desktop
+            */
+            .responsive-utilities() when (@responsive-bp4 = true) {
+                .breakpoint() when (@responsive-bp5 = true) {
+                    @media @bp4--min-max {
+                         .hide--bp4 {
+                            display: none!important;
+                        }
+                    }
+                }
+                .breakpoint() when not(@responsive-bp5 = true) {
+                    @media @bp4--min {
+                         .hide--bp4 {
+                            display: none!important;
+                        }
+                    }
+                }
+                .breakpoint;
+                
+                /*  Huge desktop
+                */
+                .responsive-utilities() when (@responsive-bp5 = true) {
+                    @media @bp5--min {
+                        .hide--bp5 {
+                            display: none!important;
+                        }
+                    }
+                }
+
+                .responsive-utilities;
+            }
+
+            .responsive-utilities;
+        }
+
+        .responsive-utilities;
+    }
+
+    .responsive-utilities;
+}
+
+.responsive-utilities;

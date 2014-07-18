@@ -1,12 +1,58 @@
 /*  -------------------------------------
     BREADCRUMB
 -------------------------------------- */
-//#TODO
 
-.include-breadcrumb() when (@include-breadcrumb = false) {
-}
+/*  Super simple breadcrumb styling.
+*   Can be applied to <ul> or <ol>
+*
+*   <ol class="breadcrumb">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+*/
 
 .include-breadcrumb() when (@include-breadcrumb = true) {
+    .breadcrumb {
+        &:extend(.nav all);
+
+        > li + li {
+            &:before {
+                content: "\00BB" "\00A0";
+            }
+
+
+            /*  You can also override the delimiter with data-breadcrumb attribute
+            *
+            *   <ol class="breadcrumb">
+                    <li data-breadcrumb="|"></li>
+                    <li data-breadcrumb="@"></li>
+                    <li data-breadcrumb="$"></li>
+                    <li></li> 
+                </ol>
+            */
+            &[data-breadcrumb] {
+                &:before {
+                    content: attr(data-breadcrumb) "\00A0";
+                }
+            }
+        }
+
+        /*  To make the root stand out, you can add the class .breadcrumb__root
+        *   to the first li
+        */
+        &__root {
+            &:extend(.font-weight--bold);
+        }
+    }
+
+    .breadcrumb--path {
+        &:extend(.nav all);
+
+        > li + li:before {
+            content: "\002F" "\00A0";
+        }
+    }
 }
 
 .include-breadcrumb;

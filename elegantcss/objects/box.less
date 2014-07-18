@@ -7,13 +7,12 @@
 *
 *   <div class="box"><div>
 */
-.include-box() when (@include-box = false) {
-}
 
 .include-box() when (@include-box = true) {
-    .box, .box--small, .box--large {
+    .boxed, {
         &:extend(.cf all);
         display: block;
+        padding: @base-spacing;
 
         /*  Removes the margin from last item.
         */
@@ -22,19 +21,19 @@
         }
     }
 
-    .box {
-        padding: @base-spacing;
-    }
-
-    /*  Just like boxed, but 50% larger.
+    /*  Just like boxed, but twice the size.
     */
-    .box--large {
+
+    .boxed--large {
+        &:extend(.boxed all);
         padding: @large-spacing;
     }
 
-    /*  Just like boxed, but 50% smaller.
+    /*  Just like boxed, but half the size.
     */
-    .box--small {
+
+    .boxed--small {
+        &:extend(.boxed all);
         padding: @small-spacing;
     }
 }

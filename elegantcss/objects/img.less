@@ -1,0 +1,54 @@
+/*  -------------------------------------
+    IMAGES
+-------------------------------------- */
+/*  Image styling
+*/
+
+.include-img() when (@include-img = true) {
+    .img--rounded {
+        .include-brand--img() when (@brand = true) {
+            .border-radius(@brand-rounded);
+        }
+
+        .include-brand--img() when (@brand = false) {
+            .border-radius(@small-spacing);
+        }
+
+        .include-brand--img;
+    }
+
+    .img--circle {
+        .border-radius(50%);
+    }
+
+    .img--thumbnail {
+        border: 1px solid @color-ui;
+        padding: (@small-spacing / 2);
+    }
+
+    .img--photo {
+        border: 1px solid @color-ui;
+        padding: (@small-spacing / 2);
+        background: white;
+    }
+
+
+    /*  Image placement
+    */
+    .img--right {
+        &:extend(.float--right, .margin--bottom, .margin--left);
+    }
+
+    .img--left {
+        &:extend(.float--left, .margin--bottom, .margin--right);
+    }
+
+    .img--center {
+        &:extend(.margin--bottom);
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.include-img;

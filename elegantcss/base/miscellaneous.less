@@ -2,12 +2,16 @@
     MISCELLANEOUS
 -------------------------------------- */
 
-::selection {
-    color: #fff;
-    background: @brand-color;
+.include-brand--miscellaneous() when (@brand = true) {
+    ::selection {
+        color: #fff;
+        background: @brand-color;
+    }
+
+    ::-moz-selection {
+        color: #fff;
+        background: @brand-color;
+    }
 }
 
-::-moz-selection {
-    color: #fff;
-    background: @brand-color;
-}
+.include-brand--miscellaneous;

@@ -4,17 +4,36 @@
 /*  This is the config of the framework.
 *
 *   The values are measured in pixels, but you should not include 'px'.
-*   Just type the unitless value.
+*   Just type the value without an unit.
 */
+
+
+/*  -------------------------------------
+    DEBUG
+-------------------------------------- */
+/*  Decide which base and generic stuff to use ('true' or 'false')
+*/
+@debug-mode: false;
 
 
 
 /*  -------------------------------------
-    BASE STYLING
+    GLOBAL BORDER-BOX
 -------------------------------------- */
 /*  Decide which base and generic stuff to use ('true' or 'false')
 */
 @global-border-box: true;
+
+
+
+/*  -------------------------------------
+    BASE STUFF
+-------------------------------------- */
+@font-size:    16;
+@line-height:  24; /* This will be the base-line-height */
+@font-color:   #444;
+@font-family:  "Open Sans", Verdana, Geneva, sans-serif;
+@font-headers: "Museo", Verdana, Geneva, sans-serif;
 
 
 
@@ -25,45 +44,34 @@
 */
 @include-grid:          true;
 @include-grid-offset:   true;
-@include-grid-pushpull: true; /* Produces alot of code */
+@include-grid-pushpull: true;
+@include-img:           true;
 @include-box:           true;
 @include-nav:           true;
 @include-breadcrumb:    true;
 @include-pagination:    true;
+@include-options:       true;
 @include-buttons:       true;
+@include-tables:        true;
 @include-mediaobject:   true;
-
-
-
-/*  -------------------------------------
-    BASE STUFF
--------------------------------------- */
-@font-size:     17;
-@line-height:   24;
-@font-color:    #444;
-@font-family:   'Helvetica Neue', Helvetica, Arial, sans-serif;
-@font-headers:  'Helvetica Black', 'Arial Black', Helvetica, Arial, sans-serif;
-@font-code:     Monaco, Menlo, Consolas, 'Courier New', monospace;
 
 
 
 /*  -------------------------------------
     COLORS
 -------------------------------------- */
-@color-white:           #fff;
-@color-grey:            #bdc3c7;
-@color-black:           #000;
-
-@color-primary:         #3498db;
-@color-success:         #2ecc71;
-@color-warning:         #f39c12;
-@color-error:           #e74c3c;
-
-
-/*  Default UI color which will color most UI stuff in the
+/*  UI color which will color most UI stuff in the
 *   framework. (Tables, button etc.)
 */
-@color-ui:              #e6e6e6;
+@color-ui:      #d9dada;
+
+/*  Default colors for various stuff in the framework.
+*   (button)
+*/
+@color-primary: #47aae1;
+@color-success: #5edb56;
+@color-warning: #fbcd00;
+@color-danger:  #f7234e;
 
 
 
@@ -72,12 +80,12 @@
 -------------------------------------- */
 /* How many columns do you want in the grid?
 */
-@grid-columns:  12;
+@grid-columns: 12;
 
 /*  Change the gutter size between the grid columns (in pixels)
 */
-@grid-gutter:           48;
-@grid-gutter--custom:   96; /* Alternative gutter */
+@grid-gutter:         48;
+@grid-gutter--custom: 1; /* Alternative gutter */
 
 
 
@@ -87,24 +95,24 @@
 /*  Want the framework to be responsive? ('true' or 'false')
 *   This adds 1 breakpoint by default.
 */
-@responsive:        true;
+@responsive: true;
 
 /*  Want more breakpoints? ('true' or 'false');
-*   "I don't see bp1!" - Dont panic, it was automaticly added through @responsive: true;
+*   "bp1" was automaticly added through @responsive: true;
 */
-@responsive-bp2:    true;
-@responsive-bp3:    true;
-@responsive-bp4:    true;
-@responsive-bp5:    false;
+@responsive-bp2: true;
+@responsive-bp3: true;
+@responsive-bp4: true;
+@responsive-bp5: false;
 
-/*  Change at which widths the breakpoints kick in (in pixels)
-*   This is beeing calculated into EM's
+/*  Change at which screen widths the breakpoints kick in (in pixels)
+*   The
 */
-@bp1:               480;
-@bp2:               768;
-@bp3:               1024;
-@bp4:               1280;
-@bp5:               1600;
+@bp1: 480;
+@bp2: 768;
+@bp3: 1024;
+@bp4: 1280;
+@bp5: 1600;
 
 
 
@@ -113,10 +121,9 @@
 -------------------------------------- */
 /*  Change the font-size of buttons (in pixels)
 */
-@btn:           14;
-@btn--huge:     72;
-@btn--big:      36;
-@btn--small:    12;
+@btn--huge:  72;
+@btn--big:   36;
+@btn--small: 12;
 
 
 
@@ -127,25 +134,30 @@
 */
 @txt--biggest:  96;
 @txt--bigger:   72;
-@txt--big:      52;
+@txt--big:      48;
 
-@h1:            42;
-@h2:            36;
-@h3:            30;
-@h4:            24;
-@h5:            20;
-@h6:            16;
+@h1:            36;
+@h2:            30;
+@h3:            24;
+@h4:            20;
+@h5:            16;
+@h6:            14;
 
-@txt--small:    14;
-@txt--smallest: 12;
+@txt--small:    12;
+@txt--smaller:  10;
+@txt--smallest: 8;
 
 
 
 /*  -------------------------------------
     BRAND STUFF
 -------------------------------------- */
-/*  Change the font-size of buttons (in pixels)
+/*  Want your brand to shine through the framework? ('true' or 'false')
+*/
+@brand:         true;
+
+/*  Change brand variables
 */
 @brand-color:   #2ecc71;
-@brand-face:    Futura, "Trebuchet MS", Arial, sans-serif;
-@brand-rounded: 4px;
+@brand-face:    "Museo", Helvetica, Arial, sans-serif;
+@brand-rounded: 6px;

@@ -3,30 +3,39 @@
 -------------------------------------- */
 
 table {
+    width: 100%;
     max-width: 100%;
 
     th, td {
-        &:extend(.txt--left);
+        &:extend(.text-align--left);
         padding: (@small-spacing / 2);
 
         @media @bp2--min {
             padding: @small-spacing;
         }
+
+        > * {
+            margin: 0;
+        }
     }
 }
 
 [colspan] {
-    &:extend(.txt--center);
+    &:extend(.text-align--center);
 }
 
 [colspan="1"] {
-    &:extend(.txt--left);
+    &:extend(.text-align--left);
 }
 
 [rowspan] {
-    &:extend(.align--middle);
+    &:extend(.vertical-align--middle);
 }
 
 [rowspan="1"] {
-    &:extend(.align--top);
+    &:extend(.vertical-align--top);
+}
+
+.numerical {
+    &:extend(.text-align--right);
 }

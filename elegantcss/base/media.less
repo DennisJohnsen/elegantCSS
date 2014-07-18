@@ -10,11 +10,11 @@ video {
 }
 
 img.left {
-    margin-right: @base-spacing;
+    &:extend(.margin--left);
 }
 
 img.right {
-    margin-left: @base-spacing;
+    &:extend(.margin--right);
 }
 
 figure > img {
@@ -25,7 +25,7 @@ figure > img {
     position: relative;
     height: 0;
     overflow: hidden;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 */
 
     iframe,
     object,
