@@ -1,0 +1,8 @@
+# Ignoring the defaults file
+##############################
+
+# This is the config, and should not be overwritten
+# when getting a new version of the framework
+##############################
+
+elegantcss-defaults.less
