@@ -1,8 +1,3 @@
-# Ignoring the defaults file
-##############################
-
-# This is the config, and should not be overwritten
-# when getting a new version of the framework
-##############################
+# .gitignore
 
 elegantcss-defaults.less
